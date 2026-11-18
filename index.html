@@ -1,3 +1,113 @@
-kjhlkjhlkjlkjlkjlkjhlkj
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Matchday</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-mark">⚽</span>
+        <span>Matchday</span>
+      </div>
+      <nav class="tabs" role="tablist">
+        <button class="tab" role="tab" data-view="fixtures" aria-selected="true">Fixtures</button>
+        <button class="tab" role="tab" data-view="standings" aria-selected="false">Standings</button>
+        <button class="tab" role="tab" data-view="nations" aria-selected="false">Nations</button>
+        <button class="tab" role="tab" data-view="highlights" aria-selected="false">Highlights</button>
+      </nav>
+    </div>
+  </header>
 
-hgfhg
+  <div class="hero">
+    <div class="container">
+      <h1 id="heroTitle">This week's matches</h1>
+      <p id="heroSub">Premier League, Bundesliga, La Liga and MLS, in your local time.</p>
+    </div>
+  </div>
+
+  <main class="container">
+    <!-- Fixtures view -->
+    <section id="view-fixtures">
+      <div class="toolbar">
+        <div class="chips" id="leagueFilter"></div>
+        <div class="week">
+          <button class="icon-btn" id="prev" aria-label="Previous week">‹</button>
+          <span id="range"></span>
+          <button class="icon-btn" id="next" aria-label="Next week">›</button>
+          <button class="btn" id="todayBtn">Today</button>
+        </div>
+      </div>
+      <div id="fixtureErrors"></div>
+      <div id="schedule"><div class="status">Loading fixtures…</div></div>
+    </section>
+
+    <!-- Standings view -->
+    <section id="view-standings" hidden>
+      <div class="toolbar">
+        <div class="segmented" id="standingsLeague"></div>
+      </div>
+      <div id="standings"><div class="status">Loading table…</div></div>
+    </section>
+
+    <!-- Nations view -->
+    <section id="view-nations" hidden>
+      <div class="toolbar">
+        <div class="chips" id="nationsFilter"><span class="muted">Loading competitions…</span></div>
+      </div>
+      <div id="nationsErrors"></div>
+      <h2 class="section-title">Upcoming</h2>
+      <div id="nationsUpcoming"><div class="status">Loading national-team games…</div></div>
+      <h2 class="section-title">Recent results</h2>
+      <div id="nationsRecent"><div class="status">Loading…</div></div>
+    </section>
+
+    <!-- Highlights view -->
+    <section id="view-highlights" hidden>
+      <div class="toolbar">
+        <div class="chips" id="highlightFilter"></div>
+        <div class="week">
+          <button class="icon-btn" id="hlPrev" aria-label="Previous week">‹</button>
+          <span id="hlRange"></span>
+          <button class="icon-btn" id="hlNext" aria-label="Next week">›</button>
+        </div>
+        <label class="toggle"><input type="checkbox" id="hlVideoOnly"> Only games with video</label>
+      </div>
+      <div id="highlightNotice"></div>
+      <div id="highlightErrors"></div>
+      <div id="highlightList"><div class="status">Loading results…</div></div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    Data from ESPN's public scoreboard and standings feeds. Live scores refresh every minute.
+  </footer>
+
+  <!-- Highlights video player (pops up over the page) -->
+  <dialog id="player">
+    <div class="player-head">
+      <h2 id="playerTitle"></h2>
+      <button class="icon-btn" id="playerClose" aria-label="Close">✕</button>
+    </div>
+    <div id="playerBody"></div>
+  </dialog>
+
+  <!-- Order matters: each file uses things defined in the ones above it. -->
+  <script src="js/config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/matches.js"></script>
+  <script src="js/fixtures.js"></script>
+  <script src="js/standings.js"></script>
+  <script src="js/nations.js"></script>
+  <script src="js/videos.js"></script>
+  <script src="js/highlights.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
